@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <!-- Rocket body gradient: light steelblue top → deep navy -->
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7EC8F5"/>
+      <stop offset="100%" stop-color="#2A5A8A"/>
+    </linearGradient>
+
+    <!-- Nose cone gradient: vivid blue top → steelblue -->
+    <linearGradient id="noseGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#A8DFFF"/>
+      <stop offset="100%" stop-color="#4682B4"/>
+    </linearGradient>
+
+    <!-- Flame: bright yellow core → orange → transparent -->
+    <linearGradient id="flameCoreGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#FFE566"/>
+      <stop offset="45%" stop-color="#FF6B35"/>
+      <stop offset="100%" stop-color="#FF1744" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="flameSideGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#FF9900"/>
+      <stop offset="100%" stop-color="#FF1744" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Window glow -->
+    <radialGradient id="windowGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#DFFFFF"/>
+      <stop offset="100%" stop-color="#2A80C2"/>
+    </radialGradient>
+
+    <!-- Fin gradient -->
+    <linearGradient id="finGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4682B4"/>
+      <stop offset="100%" stop-color="#1A3A5C"/>
+    </linearGradient>
+
+    <!-- Background circle subtle glow -->
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#1C2A38"/>
+      <stop offset="100%" stop-color="#0D0D0D"/>
+    </radialGradient>
+
+    <!-- Glow filter for window -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Subtle flame blur -->
+    <filter id="flameBlur" x="-40%" y="-10%" width="180%" height="130%">
+      <feGaussianBlur stdDeviation="0.8"/>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="31" fill="url(#bgGrad)" stroke="#2A3A4A" stroke-width="1"/>
+
+  <!-- Stars -->
+  <circle cx="12" cy="14" r="0.9" fill="#FDFDFA" opacity="0.85"/>
+  <circle cx="52" cy="11" r="1.2" fill="#FDFDFA" opacity="0.7"/>
+  <circle cx="9"  cy="38" r="0.7" fill="#FDFDFA" opacity="0.6"/>
+  <circle cx="55" cy="28" r="0.8" fill="#FDFDFA" opacity="0.75"/>
+  <circle cx="20" cy="9"  r="0.6" fill="#FDFDFA" opacity="0.55"/>
+  <circle cx="48" cy="44" r="0.7" fill="#FDFDFA" opacity="0.5"/>
+  <circle cx="15" cy="50" r="0.9" fill="#FDFDFA" opacity="0.45"/>
+  <!-- dot star sparkle -->
+  <path d="M46 18 L46.6 19.8 L48.5 19.8 L47 21 L47.6 22.8 L46 21.6 L44.4 22.8 L45 21 L43.5 19.8 L45.4 19.8 Z" fill="#FDFDFA" opacity="0.6" transform="scale(0.55) translate(38, 13)"/>
+
+  <!-- === ROCKET === -->
+
+  <!-- Flame glow (blurred behind) -->
+  <ellipse cx="32" cy="50" rx="5" ry="7" fill="#FF6B35" opacity="0.35" filter="url(#flameBlur)"/>
+
+  <!-- Side flames -->
+  <ellipse cx="29" cy="50.5" rx="2.5" ry="5" fill="url(#flameSideGrad)" opacity="0.75"/>
+  <ellipse cx="35" cy="50.5" rx="2.5" ry="5" fill="url(#flameSideGrad)" opacity="0.75"/>
+
+  <!-- Core flame -->
+  <ellipse cx="32" cy="49" rx="3.5" ry="6.5" fill="url(#flameCoreGrad)"/>
+
+  <!-- Nozzle (exhaust bell) -->
+  <path d="M27.5 44 Q28.5 46.5 32 46.5 Q35.5 46.5 36.5 44 Z" fill="#1A3A5C"/>
+
+  <!-- Left fin -->
+  <path d="M27 36 L19 46 L27 43 Z" fill="url(#finGrad)"/>
+  <!-- Left fin highlight edge -->
+  <path d="M27 36 L19 46" stroke="#4682B4" stroke-width="0.6" opacity="0.5"/>
+
+  <!-- Right fin -->
+  <path d="M37 36 L45 46 L37 43 Z" fill="url(#finGrad)"/>
+  <!-- Right fin highlight edge -->
+  <path d="M37 36 L45 46" stroke="#4682B4" stroke-width="0.6" opacity="0.5"/>
+
+  <!-- Rocket body -->
+  <rect x="27" y="24" width="10" height="20" rx="2.5" fill="url(#bodyGrad)"/>
+  <!-- Body highlight strip -->
+  <rect x="27.5" y="24.5" width="3" height="19" rx="1.5" fill="white" opacity="0.12"/>
+
+  <!-- Nose cone -->
+  <path d="M27 24.5 Q32 9 37 24.5 Z" fill="url(#noseGrad)"/>
+  <!-- Nose highlight -->
+  <path d="M28.5 24 Q31 13 32.5 13" stroke="white" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
+
+  <!-- Porthole window -->
+  <circle cx="32" cy="32" r="4.2" fill="url(#windowGrad)" stroke="#7EC8F5" stroke-width="0.8" filter="url(#glow)"/>
+  <!-- Window inner shine -->
+  <circle cx="30.5" cy="30.5" r="1.2" fill="white" opacity="0.45"/>
+
+  <!-- Rivet dots -->
+  <circle cx="30" cy="26.5" r="0.55" fill="#1A3A5C" opacity="0.7"/>
+  <circle cx="34" cy="26.5" r="0.55" fill="#1A3A5C" opacity="0.7"/>
+</svg>
